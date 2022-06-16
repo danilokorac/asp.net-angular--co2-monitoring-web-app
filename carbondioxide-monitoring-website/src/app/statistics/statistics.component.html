@@ -1,0 +1,113 @@
+<form #statistic="ngForm" (ngSubmit)="statisticForm(statistic)">
+    <label for="">Pick start date</label>
+    <input type="date" name="startDate" id="" ngModel>
+    <label for="">Pick end date</label>
+    <input type="date" name="endDate" id="" ngModel>
+    <label for="">Location</label>
+    <input type="text" name="location" id="" ngModel>
+    <label for="lang">Location type</label>
+    <select name="locationType" ngModel>
+      <option value="" disabled selected hidden>Choose filter...</option>
+      <option value="city">City</option>
+      <option value="country">Country</option>
+    </select>
+    <input type="submit" value="Search">
+</form>
+
+<canvas id="chart" width="10%">
+    
+</canvas>
+
+<br>
+<br>
+<h2 *ngIf="locationType=='country'">Average pollution per each city in country</h2>
+<h2 *ngIf="locationType=='city'">Measurments for selected city</h2>
+<br>
+<br>
+
+<table class="table table-striped table-dark round-edge">
+    <thead>
+      <tr>
+        <th scope="col">Value</th>
+        <th scope="col" *ngIf="locationType=='country'">City</th>
+        <th scope="col" *ngIf="locationType=='city'">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let userMeasurment of statistcValues">
+        <td>{{userMeasurment.measurementValue}}</td>
+        <td *ngIf="locationType=='country'">{{userMeasurment.city}}</td>
+        <td *ngIf="locationType=='city'">{{numberToMonthName(userMeasurment.measurementDate)}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+ 
+  <h2 *ngIf="locationType=='country'">Most polluted citys</h2>
+  <h2 *ngIf="locationType=='city'">Higher measurments for city</h2>
+
+  <br>
+  <br>
+
+  <table class="table table-striped table-dark round-edge">
+    <thead>
+      <tr>
+        <th scope="col">Value</th>
+        <th scope="col" *ngIf="locationType=='country'">City</th>
+        <th scope="col" *ngIf="locationType=='city'">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let userMeasurment of statistcMax">
+        <td>{{userMeasurment.measurementValue}}</td>
+        <td *ngIf="locationType=='country'">{{userMeasurment.city}}</td>
+        <td *ngIf="locationType=='city'">{{numberToMonthName(userMeasurment.measurementDate)}}</td>
+      </tr>
+    </tbody>
+  </table>
+<br>
+<br>
+
+<h2 *ngIf="locationType=='country'">Least polluted citys</h2>
+<h2 *ngIf="locationType=='city'">Lowest measurments for city</h2>
+
+<br>
+<br>
+  
+<table class="table table-striped table-dark round-edge">
+    <thead>
+      <tr>
+        <th scope="col">Value</th>
+        <th scope="col" *ngIf="locationType=='country'">City</th>
+        <th scope="col" *ngIf="locationType=='city'">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let userMeasurment of statistcMin">
+        <td>{{userMeasurment.measurementValue}}</td>
+        <td *ngIf="locationType=='country'">{{userMeasurment.city}}</td>
+        <td *ngIf="locationType=='city'">{{numberToMonthName(userMeasurment.measurementDate)}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+<br>
+<br>
+<h2>Average pollution</h2>
+<br>
+<br>
+
+<table class="table table-striped table-dark round-edge">
+  <thead>
+    <tr>
+      <th scope="col">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{statistcAverage}}</td>
+    </tr>
+  </tbody>
+</table>

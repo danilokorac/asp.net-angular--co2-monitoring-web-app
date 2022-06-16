@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg text-light p-3">
+    <a class="navbar-brand px-5 " href="#"><img src="../assets/img/carbon-dioxide.png" alt="$"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto px-5">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/statistics']">STATISTICS <span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item" *ngIf="!isLoggedIn; else logged">
+          <a [routerLink]="['/RegistrationLogIn']" class="nav-link" routerLinkActive="router-link-active">SIGN IN</a>
+        </li>
+        <ng-template #logged>
+            <li class="nav-item">
+                <a [routerLink]="['user/measurment/add']" class="nav-link" routerLinkActive="router-link-active">Add</a>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link" routerLinkActive="router-link-active" (click)="logout()">Log out</span>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]="['user/measurment/list']" class="nav-link" routerLinkActive="router-link-active">My measurments</a>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </nav>

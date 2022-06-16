@@ -1,0 +1,17 @@
+<div class="add-measurement">
+    <div class="form-wrapper">
+        <span class="formName">Add new measurment</span>
+        <form #addMeasurement="ngForm" (ngSubmit)="addMeasurment(addMeasurement)">
+       
+        <input type="number" name="value" placeholder="Value" required="" ngModel>
+        <input type="text" name="city" placeholder="City" required="" ngModel>
+        <input type="text" name="country" placeholder="Country" required="" ngModel>
+        <input type="date" name="date" placeholder="Date" required="" ngModel>
+        <input type="submit" value="Add">
+
+    </form>
+
+    <span class="successfuly">{{sucessfulyInserted}}</span>
+    <span class="unuccessfuly">{{unsucessfulyInserted}}</span>
+</div>
+</div>

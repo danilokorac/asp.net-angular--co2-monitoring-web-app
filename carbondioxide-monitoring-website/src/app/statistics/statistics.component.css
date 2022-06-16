@@ -1,0 +1,14 @@
+h2,span,label{
+    color: white;
+}
+.table{
+    text-align: center;
+}
+form{
+    display: flex;
+    justify-content:space-between;
+    padding: 3rem 0rem;
+}
+table{
+    border-radius: 30px;
+}

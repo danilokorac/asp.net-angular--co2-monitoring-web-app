@@ -1,0 +1,32 @@
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
+body {
+    margin: 0;
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    background-color: rgb(52, 58, 64);
+    font-family: 'Poiret One';
+
+}
+.filters{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+form {
+    color: white;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+select, option, button, input, ::placeholder {
+    background-color: #6C757D;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+input[type=text]:focus{
+    background-color: #6C757D;
+}
